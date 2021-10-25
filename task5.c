@@ -40,6 +40,21 @@ int main ()
     else{
         printf("Fail");
     }
+
+    BN_hex2bn(&S, "643D6F34902D9C7EC90CB0B2BCA36C47FA37165C0005CAB026C0542CBDB6803F");//bugged
+    
+    unsignSignature(C,S,e,n);
+
+    printBN("C (corrupted) = ", C);
+//C = 91471927C80DF1E42C154FB4638CE8BC726D3D66C83A4EB6B7BE0203B41AC294
+    if(BN_cmp(C, M) == 0){
+        printf("Valid");
+    }
+    else{
+        printf("Fail");
+    }
+
+
     //deallocate vars
 
 return 0;
